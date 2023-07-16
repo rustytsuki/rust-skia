@@ -2186,7 +2186,7 @@ impl Canvas {
     // internal helper
     //
 
-    pub(crate) fn own_from_native_ptr<'lt>(native: *mut SkCanvas) -> Option<OwnedCanvas<'lt>> {
+    pub fn own_from_native_ptr<'lt>(native: *mut SkCanvas) -> Option<OwnedCanvas<'lt>> {
         if !native.is_null() {
             Some(OwnedCanvas::<'lt>(
                 ptr::NonNull::new(Self::borrow_from_native_mut(unsafe { &mut *native })).unwrap(),
@@ -2197,11 +2197,11 @@ impl Canvas {
         }
     }
 
-    pub(crate) fn borrow_from_native(native: &SkCanvas) -> &Self {
+    pub fn borrow_from_native(native: &SkCanvas) -> &Self {
         unsafe { transmute_ref(native) }
     }
 
-    pub(crate) fn borrow_from_native_mut(native: &mut SkCanvas) -> &mut Self {
+    pub fn borrow_from_native_mut(native: &mut SkCanvas) -> &mut Self {
         unsafe { transmute_ref_mut(native) }
     }
 }
