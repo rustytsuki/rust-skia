@@ -1,7 +1,7 @@
 [workspace]
 resolver = "2"
 members = [
-    "skia-bindings",
+    # "skia-bindings",
     "skia-safe",
     "skia-org",
     "mk-workflows",
